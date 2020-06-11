@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>Fix-it Buddy</title>
+    <style>
+         .card:hover {
+             color: whitesmoke;
+            cursor: pointer;
+        }
+
+        .list-group-item:hover {
+            color: white;
+            background-color: black;
+            
+        }
+       
+
+        
+
+        
+        
+        body {
+            font-family: 'Titillium Web', sans-serif;
+            overflow-x: hidden;
+            height:700px
+        }
+
+        footer {
+
+       width: 1000px;
+       bottom: 0px;
+       position: relative;
+       margin-left: 0px;
+       margin-bottom: 1px;
+       
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        hr {
+            border: 0.4px solid rgb(163, 163, 117);
+        }
+
+        .anc {
+            color: white;
+        }
+
+        .anc:hover {
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/"><img src="./logo.png" height="32px"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto text-dark">
+                  
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="/read_admin">admin</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="row ml-5 mt-3 ">
+        <div class="col-md-2 mt-5 border rounded p-4">
+            {{!-- <div class="list-group list-group-flush">
+                <a class="list-group-item border-0 mt-1 rounded">DASHBOARD</a>
+            </div> --}}
+            <div class="list-group list-group-flush" id="infoUpdate">
+                <a class="list-group-item border-0 mt-1 rounded">INFORMATION</a>
+            </div>
+            <div class="list-group list-group-flush" id="addressUpdate">
+                <a class="list-group-item border-0 mt-1 rounded">ADDRESS BOOK</a>
+            </div>
+            <div class="list-group list-group-flush">
+                <a class="list-group-item border-0 mt-1 rounded">MY BOOKING</a>
+            </div>
+        </div>
+    
+    <div class="row ml-7 mt-3 offset-3 mb-5 " style="height:500px;width:900px">
+        <div class="col-md-6 mt-5 border border-primary rounded p-4 shadow">
+            <h3 class="offset-3"><i class="fa fa-user" style="font-size:36px"></i>&nbsp;Admin profile</h3><hr/>
+            
+            <div class="col-md-12 ">
+            <div class="row mt-5"><h5><strong>E-MAIL:</strong>&nbsp;&nbsp;{{loggedInadmin.email}}</h5></div><br/><br/>
+            <div class="row mt-3"><h5><strong>PASSWORD:</strong>&nbsp;&nbsp;{{loggedInadmin.password}}</h5></div>
+            </div>
+            
+           
+        </div>
+    </div>
+    
+  
+
+    <footer class="py-4 ml-0px bg-dark mt-5 " style="width: 5000px;">
+        <ul class="list-group list-group-horizontal-sm offset-9">
+            <li>
+                <a class="anc" href="/aboutus">About Us</a>
+            </li>
+            <li class=" ml-3">
+                <a class="anc" href="/contactus">Contact Us</a>
+            </li>
+            <li class=" ml-3">
+                <a class="anc" href="/admin">Admin Panel</a>
+            </li>
+        </ul>
+        <hr />
+        <p class="m-0 mr-5 text-center text-white">Copyright &copy; Fix-it Buddy 2019</p>
+        <ul class="list-group list-group-horizontal-sm offset-5 mt-2">
+            <li class="ml-5"><a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram fa-lg"
+                        style="color: white;"></i></a></li>
+            <li class=" ml-3"><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook-square fa-lg"
+                        style="color: white;"></i></a></li>
+            <li class=" ml-3"><a href="https://twitter.com/?lang=en" target="_blank"><i
+                        class="fa fa-twitter-square fa-lg" style="color: white;"></i></a></li>
+        </ul>
+
+
+
+        <!-- /.container -->
+    </footer>
+     
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="js/adminupdate.js"></script>
+
+</html>

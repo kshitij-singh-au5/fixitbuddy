@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Employee Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+     <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto text-dark">
+                    {{!-- <li class="nav-item active">
+                        <a class="nav-link" href="#">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li> --}}
+                   
+                    <li class="btn-group dropper">
+                        <a class="nav-link dropdown-toggle" style="font-size: 15px;" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">Admin
+                        </a>
+                        <div class=" dropdown-menu ">
+                            <a href="/profile" class="dropdown-item" type="button" style="font-size: 15px;">My Profile</a>
+                            <a href="/logout" class="dropdown-item" type="button" style="font-size: 15px;">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row flex-xs-nowrap">
+    <main>
+         
+     <form action="/create" method="POST" id="form" class="form-group  col-md-7 text-dark offset-1 border shadow mb-5" style="max-width: 85%; font-size: 2.5rem ;box-sizing:content-box;padding-right:90px;margin-top:90px">
+               
+              <input type="hidden" name="_id" value="{{blogs._id}}">
+
+               <legend class="mt-4 text-center"  style="font-size: 2rem;"><h1><b>{{title}}</b></h1></legend>
+                
+                    <div class="form-group col-3 row mt-5">
+                        <h3><strong>Employee id</strong></h3>
+                        <input type="text" name="emplyid" class="form-control" id="emplyid"  style="font-size: 2rem;" vlaue="{{blogs.id}}">
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="form-group">
+                                 <h3><strong>First Name</strong></h3>
+                                 <input type="name" class="form-control" name="firstname" id="firstname" required  style="font-size: 2rem;" vlaue="{{blogs.firstname}}">
+                            </div>
+                        </div>
+                         <div class="col-xs-6">
+                            <div class="form-group ">
+                               <h3><strong>Last Name</strong></h3>
+                               <input type="lname" class="form-control " name="lastname" id="lastname" required  style="font-size: 2rem;" vlaue="{{blogs.lastname}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group-lg mb-4 ">
+                        <h3><strong>Department</strong></h3>
+                           <select class="custom-select" id="department" aria-label="Example select with button addon" style="font-size: 2rem;" vlaue="{{blogs.department}}">
+                              <option selected>Choose...</option>
+                              <option value="1">Cleaning</option>
+                              <option value="2">Electrician and plumber work </option>
+                              <option value="3">Appliances and Electronics Repair</option>
+                              <option value="4">Fitness and yoga</option>
+                            </select>
+                       </div>
+                       <div class="input-group-lg mb-4 ">
+                        <h3><strong>Job Title</strong></h3>
+                           <select class="custom-select" id="title" aria-label="Example select with button addon"  style="font-size: 2rem;" vlaue="{{blogs.title}}">
+                              <option selected>Choose...</option>
+                              <option value="1">Bathroom Deep cleaning</option>
+                              <option value="2">Carpet cleaning</option>
+                              <option value="3">Full Home cleaning</option>
+                              <option value="4">Kitchen Deep cleaning</option>
+                              <option value="5">Electrician</option>
+                              <option value="6">plumber</option>
+                              <option value="7">carpenter</option>
+                              <option value="8">woodwork and furniture making</option>
+                              <option value="9">AC serve and repair</option>
+                              <option value="10">Washing Machine service and repair</option>
+                              <option value="11">Refrigerator and oven repair</option>
+                              <option value="12">Geyser service and repair</option>
+                              <option value="13">Fitness trainer</option>
+                              <option value="14">yoga trainer</option>
+                            </select>
+                       </div>
+                   
+                     <div class="row">
+                        <div class="col-xs-6">
+                            <div class="form-group">
+                                 <h3><strong>Mobile number</strong></h3>
+                                  <input type="mobile" class="form-control" name="mobile" id="mobile"  style="font-size: 2rem;" vlaue="{{blogs.mobile}}">
+                            </div>
+                        </div>
+                         <div class="col-xs-6">
+                            <div class="form-group ">
+                               <h3><strong>E-mail address</strong></h3>
+                              <input type="email" class="form-control" name="email" id="email"  style="font-size: 2rem;" vlaue="{{blogs.email}}">
+                            </div>
+                        </div>
+                    </div>
+                   
+                 
+                    <div class="row">
+                        <div class="col-xs-6">
+                             <div class="input-group-lg mb-4 ">
+                              <h3><strong>State</strong></h3>
+                               <select class="custom-select" id="state" aria-label="Example select with button addon"  style="font-size: 2rem;" vlaue="{{blogs.state}}">
+                                   <option selected >Choose...</option>
+                                   <option value="1">Andra Pradesh</option>
+                                   <option value="2">Arunachal Pradesh</option>
+                                   <option value="3">Assam</option>
+                                   <option value="4">Bihar</option>
+                                   <option value="5">Chhattisgarh</option>
+                                   <option value="6">Goa</option>
+                                   <option value="7">Gujarat</option>
+                                   <option value="8">Haryana</option>
+                                   <option value="9">Himachal Pradesh</option>
+                                   <option value="10">Jharkhand	</option>
+                                   <option value="11">Karnataka</option>
+                                   <option value="12">Kerala</option>
+                                   <option value="13">Madhya Pradesh</option>
+                                   <option value="14">Maharashtra</option>
+                                   <option value="15">Manipur</option>
+                                   <option value="16">Meghalaya </option>
+                                   <option value="17">Mizoram</option>
+                                   <option value="18">Nagaland</option>
+                                   <option value="19">Odisha</option>
+                                   <option value="20">Punjab</option>
+                                   <option value="21">Rajasthan</option>
+                                   <option value="22">Sikkim</option>
+                                   <option value="23">Tamil Nadu</option>
+                                   <option value="24">Telangana</option>
+                                   <option value="25">Tripura</option>
+                                   <option value="26">Uttar Pradesh</option>
+                                   <option value="27">Uttarakhand</option>
+                                   <option value="28">West Bengal</option>
+                                   
+
+                                </select>
+                       </div>
+                       </div>
+                     <div class="col-xs-6">  
+                    <div class="form-group mt-5">
+                        <h3><strong>Experience</strong></h3>
+                        <input type="experience" class="form-control" name="experience" id="experience"  style="font-size: 2rem;"  vlaue="{{blogs.experience}}">
+                    </div>
+                    </div>
+                    
+                    
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <h3><strong>Birth.Date</strong></h3>
+                                  <input type="date" class="form-control" name="Bdate" id="Bdate" style="font-size: 2rem;"  vlaue="{{blogs.Bdate}}">
+                            </div>
+                        </div>
+                         <div class="col-lg-6">
+                            <div class="form-group ">
+                              <h3><strong>Hire.Date</strong></h3>
+                              <input type="date" class="form-control" name="Hdate" id="Hdate"  style="font-size: 2rem;" vlaue="{{blogs.Date}}">
+                            </div>
+                        </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary mt-5 mb-5 lg  ml-4" style="font-size: 2rem;">{{title}}</button>
+                    </div>
+               
+ </form> 
+ </main>
+  </div>
+  </div>
+                  
+  
+   
+                
+    
+    <footer class="py-5 bg-dark">
+        <ul class="list-group list-group-horizontal-sm offset-8" style="font-size: 15px;">
+            <li>
+                <a class="anc" href="/aboutus">About Us</a>
+            </li>
+            <li class=" ml-3">
+                <a class="anc" href="/contactus">Contact Us</a>
+            </li>
+            <li class=" ml-3">
+                <a class="anc" href="/admin">Admin Panel</a>
+            </li>
+        </ul>
+        <hr />
+        <p class="m-0 mr-5 text-center text-white" style="font-size: 15px;">Copyright &copy; Fix-it Buddy 2019</p>
+        <ul class="list-group list-group-horizontal-sm offset-5 mt-2">
+            <li class="ml-5"><a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram fa-lg"
+                        style="color: white;"></i></a></li>
+            <li class=" ml-3"><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook-square fa-lg"
+                        style="color: white;"></i></a></li>
+            <li class=" ml-3"><a href="https://twitter.com/?lang=en" target="_blank"><i
+                        class="fa fa-twitter-square fa-lg" style="color: white;"></i></a></li>
+        </ul>
+
+
+
+        <!-- /.container -->
+    </footer>
+   
+</body>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+
+</html>

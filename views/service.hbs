@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <title>{{service.name}}</title>
+
+    <style>
+        header.masthead {
+            position: relative;
+            background-color: #343a40;
+            background: url({{service.img}}) no-repeat center center;
+            background-size: cover;
+            padding-top: 9rem;
+            padding-bottom: 9rem;
+
+
+        }
+
+        header.masthead .overlay {
+            position: absolute;
+            background-color: #212529;
+            height: 100%;
+            width: 100%;
+            min-height: 100%;
+            min-width: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0.3;
+            filter: brightness(.4);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        hr {
+            border: 0.4px solid rgb(163, 163, 117);
+        }
+
+        .anc {
+            color: white;
+        }
+
+        .anc:hover {
+            text-decoration: none;
+        }
+
+
+        #panel1,
+        #feature1 {
+            cursor: pointer;
+            padding: 5px;
+            text-align: center;
+            border: solid 1px #c3c3c3;
+            border-radius: 10px;
+        }
+
+        #feature1:hover {
+            background-color: #FF4B2B;
+            color: white;
+        }
+
+        #panel1 {
+            padding: 40px;
+            display: none;
+        }
+
+        #panel2,
+        #feature2 {
+            cursor: pointer;
+            padding: 5px;
+            text-align: center;
+            border: solid 1px #c3c3c3;
+            border-radius: 10px;
+        }
+
+        #feature2:hover {
+            background-color: #FF4B2B;
+            color: white;
+        }
+
+        #panel2 {
+            padding: 40px;
+            display: none;
+        }
+
+        #panel3,
+        #feature3 {
+            cursor: pointer;
+            padding: 5px;
+            text-align: center;
+            border: solid 1px #c3c3c3;
+            border-radius: 10px;
+        }
+
+        #feature3:hover {
+            background-color: #FF4B2B;
+            color: white;
+        }
+
+        #panel3 {
+            padding: 40px;
+            display: none;
+        }
+
+        #panel4,
+        #feature4 {
+            cursor: pointer;
+            padding: 5px;
+            text-align: center;
+            border: solid 1px #c3c3c3;
+            border-radius: 10px;
+        }
+
+        #feature4:hover {
+            background-color: #FF4B2B;
+            color: white;
+        }
+
+        #panel4 {
+            padding: 40px;
+            display: none;
+        }
+
+        body {
+            overflow-x: hidden;
+            font-family: 'Montserrat', sans-serif;
+
+        }
+
+        small {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        a {
+            color: black;
+        }
+
+        a:hover {
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .upbutton {
+            width: 3.5rem;
+            height: 3.5rem;
+            background-color: #FF4B2B;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            right: 5%;
+            bottom: 0;
+
+            align-self: flex-end;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+
+        }
+
+        .upbutton:hover {
+            cursor: pointer;
+            color: white;
+        }
+
+        .bounce-1 {
+
+            animation-name: bounce-1;
+            animation-timing-function: linear;
+        }
+
+        @keyframes bounce-1 {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .btn {
+            border-radius: 20px;
+            border: 1px solid #FF4B2B;
+            background-color: #FF4B2B;
+            color: #FFFFFF;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 12px 45px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: transform 80ms ease-in;
+        }
+
+        .modal-confirm {
+            color: #636363;
+            width: 325px;
+        }
+
+        .modal-confirm .modal-content {
+            padding: 20px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .modal-confirm .modal-header {
+            border-bottom: none;
+            position: relative;
+        }
+
+        .modal-confirm h4 {
+            text-align: center;
+            font-size: 26px;
+            margin: 30px 0 -15px;
+        }
+
+        .modal-confirm .form-control,
+        .modal-confirm .btn {
+            min-height: 40px;
+            border-radius: 3px;
+        }
+
+        .modal-confirm .close {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+        }
+
+        .modal-confirm .modal-footer {
+            border: none;
+            text-align: center;
+            border-radius: 5px;
+            font-size: 13px;
+        }
+
+        .modal-confirm .icon-box {
+            color: #fff;
+            position: absolute;
+            margin: 0 auto;
+            left: 0;
+            right: 0;
+            top: -70px;
+            width: 95px;
+            height: 95px;
+            border-radius: 50%;
+            z-index: 9;
+            background: #FF4B2B;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-confirm .icon-box i {
+            font-size: 58px;
+            position: relative;
+            top: 3px;
+        }
+
+        .modal-confirm.modal-dialog {
+            margin-top: 80px;
+        }
+
+        .modal-confirm .btn {
+            color: #fff;
+            border-radius: 4px;
+            background: #FF4B2B;
+            text-decoration: none;
+            transition: all 0.4s;
+            line-height: normal;
+            border: none;
+        }
+
+        .modal-confirm .btn:hover,
+        .modal-confirm .btn:focus {
+            background: #FF4B2B;
+            outline: none;
+        }
+
+        .trigger-btn {
+            display: inline-block;
+            margin: 100px auto;
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            {{#if userlogin}}
+            <a class="navbar-brand" href="/?userlogin=true"><img src="./logo.png" height="32px"></a>
+            {{else}}
+            <a class="navbar-brand" href="/"><img src="./logo.png" height="32px"></a>
+            {{/if}}
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto text-dark">
+                    {{!-- <li class="nav-item active">
+                        <a class="nav-link" href="#">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li> --}}
+                    {{#if userlogin}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/aboutus?userlogin=true">About Us</a>
+                    </li>
+                    {{else}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/aboutus">About Us</a>
+                    </li>
+                    {{/if}}
+                    {{!-- <li class="nav-item">
+                        <a class="nav-link" href="#">Services</a>
+                    </li> --}}
+                    {{#if userlogin}}
+                    {{!-- <li>
+                        <div class="btn-group">
+                            <a href="#" class="btn-md btn-basic dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                My Account
+                            </a>
+                            <div class=" dropdown-menu dropdown-menu-right">
+                                <a href="/profile" class="dropdown-item" type="button">My Profile</a>
+                                <a href="/logout" class="dropdown-item" type="button">Logout</a>
+                            </div>
+                        </div>
+                    </li> --}}
+                    <li class="btn-group dropper">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            {{#if user.photo}}
+                            <img src="{{user.photo}}" height="30px" width="30px" class="rounded-circle">
+                            {{else}}
+                            <img class="rounded-circle"
+                                src="https://sophosnews.files.wordpress.com/2013/08/facebook-silhouette_thumb.jpg"
+                                height="30px" width="30px" alt="new pic">
+                            {{/if}}
+                            <b>{{user.firstname}}</b>
+                        </a>
+                        <div class=" dropdown-menu ">
+                            <a href="/profile" class="dropdown-item" type="button">My Profile</a>
+                            <a href="/logout" class="dropdown-item" type="button">Logout</a>
+                        </div>
+                    </li>
+
+
+
+                    {{else}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/signuplogin">Login/Sign Up</a>
+                    </li>
+                    {{/if}}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header class="masthead text-white" id="top">
+        <div class="overlay"></div>
+        <div class="row">
+            <div class="col-sm-8 offset-sm-2">
+                <h1 class="mb-5" style="font-weight: 600;">{{service.head}}</h1>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-8 offset-sm-3 ">
+
+                <div class="form-row">
+                    <div class="col-12 col-md-9 mb-2 mb-md-0">
+                        <ul>
+                            {{#each service.mainfeature}}
+                            <li>{{this}}</li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="row mt-5 ml-5">
+        <div class="col-6 h-100">
+            <table class="table bg-light table-striped table-hover border " id="priceTable">
+                <thead class="thead-active">
+                    {{#each service.thd}}
+                    <th>{{this}}</th>
+                    {{/each}}
+                </thead>
+                <tbody id="tbodyp">
+                    <tr>
+
+                        {{#each service.td1}}
+                        <td>{{this}}</td>
+                        {{/each}}
+                    </tr>
+                    <tr>
+                        {{#each service.td2}}
+                        <td>{{this}}</td>
+                        {{/each}}
+                    </tr>
+                    <tr>
+
+                        {{#each service.td3}}
+                        <td>{{this}}</td>
+                        {{/each}}
+                    </tr>
+                    <tr>
+                        {{#if service.td4}}
+                        {{#each service.td4}}
+                        <td>{{this}}</td>
+                        {{/each}}
+                        {{/if}}
+                    </tr>
+                    <tr>
+                        {{#if service.td5}}
+                        {{#each service.td5}}
+                        <td>{{this}}</td>
+                        {{/each}}
+                        {{/if}}
+                    </tr>
+                    <tr>
+                        {{#if service.td6}}
+                        {{#each service.td6}}
+                        <td>{{this}}</td>
+                        {{/each}}
+                        {{/if}}
+                    </tr>
+                    <tr>
+                        {{#if service.td7}}
+                        {{#each service.td7}}
+                        <td>{{this}}</td>
+                        {{/each}}
+                        {{/if}}
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-4 offset-1 bg-light border rounded py-4 px-4">
+            {{#with service.bookingDetail}}
+            <strong> {{this.[0]}} </strong>
+            <p>{{this.[1]}}</p>
+            <strong> {{this.[2]}} </strong>
+            <p>{{this.[3]}}</p>
+            <strong> {{this.[4]}} </strong>
+            <p>{{this.[5]}}</p>
+            <strong> {{this.[6]}} </strong>
+            <p>{{this.[7]}}</p>
+            <button id="button-{{this.[10]}}" class=" btn  w-50">{{this.[8]}}</button>
+            <p>
+
+                {{this.[9]}}
+
+                {{#if this.[9]}}
+                <i class="fa fa-check"></i>
+                {{/if}}
+
+            </p>
+
+            {{/with}}
+        </div>
+    </div>
+
+
+    <div class="row ml-5 mt-5 mb-3 ">
+        <div class="col-sm-6 bg-light d-inline-block h-50 py-4 border rounded">
+            {{#with service.faq}}
+            <h3 class=" text-center mt-4"> {{this.[0]}}</h3>
+            <div class="ml-1 mt-4" id="feature1">
+                <span><strong> {{this.[1]}}</strong></span>
+            </div>
+
+            <div class="ml-1 bg-white" id="panel1">
+                <p>{{this.[2]}}</p>
+            </div>
+
+            <div class="ml-1 mt-4" id="feature2">
+                <span><strong>{{this.[3]}}</strong></span>
+            </div>
+
+            <div class="ml-1 bg-white" id="panel2">
+                <p>{{this.[4]}}</p>
+            </div>
+
+            <div class="ml-1 mt-4" id="feature3">
+                <span><strong>{{this.[5]}}</strong></span>
+            </div>
+
+            <div class="ml-1 bg-white" id="panel3">
+                <p>{{this.[6]}}</p>
+            </div>
+
+            <div class="ml-1 mt-4" id="feature4">
+                <span><strong>{{ this.[7]}}</strong></span>
+            </div>
+
+            <div class="ml-1 bg-white" id="panel4">
+                <p>{{this.[8]}}</p>
+            </div>
+        </div>
+        {{/with}}
+
+        <div class="col-sm-4 offset-sm-1 bg-light border rounded">
+
+
+            {{#with service.benefits}}
+            <ul>
+                <li>
+                    <div class=" mt-2">
+                        <h3 class="mt-4">{{this.[0]}}</h3>
+                    </div>
+                </li>
+            </ul>
+
+            <hr />
+            <ol>
+                <li>
+                    <b>{{this.[1]}}</b>
+                    {{this.[2]}}
+                </li>
+                <li>
+                    <b>{{this.[3]}}</b>
+                    {{this.[4]}}
+                </li>
+
+                <li>
+                    <b>{{this.[5]}}</b>
+                    {{this.[6]}}
+                </li>
+                {{#if this.[7]}}
+                <li>
+                    <b>{{this.[7]}}</b>
+                    {{this.[8]}}
+                </li>
+                {{/if}}
+                {{#if this.[9]}}
+                <li>
+                    <b>{{this.[9]}}</b>
+                    {{this.[10]}}
+                </li>
+                {{/if}}
+
+            </ol>
+
+
+        </div>
+
+
+        {{/with}}
+
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade modal-1" id="bookNowModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <form id="target" action="/bookedService" method="POST">
+                        <h4>Choose one package</h4>
+                        <table class="table table-striped table-hover border border" id="tableSelect">
+                            <thead class="thead-active">
+                                {{#each service.thd}}
+                                <th>{{this}}</th>
+                                {{/each}}
+                            </thead>
+                            <tbody>
+                                <tr>
+
+                                    {{#each service.td1}}
+                                    {{!-- <td>{{this}}</td> --}}
+                                    {{#if @last}}
+                                    <td>
+                                        <div class="radio">
+                                            <label><input type="radio" name="optradio" value="{{this}}"
+                                                    required></label>
+                                        </div>
+
+                                    </td>
+                                    {{else}}
+                                    <td>{{this}}</td>
+                                    {{/if}}
+                                    {{/each}}
+                                </tr>
+                                <tr>
+                                    {{#each service.td2}}
+                                    {{#if @last}}
+                                    <td>
+                                        <div class="radio">
+                                            <label><input type="radio" name="optradio" value="{{this}}"
+                                                    required></label>
+                                        </div>
+
+                                    </td>
+                                    {{else}}
+                                    <td>{{this}}</td>
+                                    {{/if}}
+                                    {{/each}}
+                                </tr>
+                                <tr>
+
+                                    {{#each service.td3}}
+                                    {{#if @last}}
+                                    <td>
+                                        <div class="radio">
+                                            <label><input type="radio" name="optradio" value="{{this}}"
+                                                    required></label>
+                                        </div>
+
+                                    </td>
+                                    {{else}}
+                                    <td>{{this}}</td>
+                                    {{/if}}
+                                    {{/each}}
+                                </tr>
+                                <tr>
+                                    {{#if service.td4}}
+                                    {{#each service.td4}}
+                                    {{#if @last}}
+                                    <td>
+                                        <div class="radio">
+                                            <label><input type="radio" name="optradio" value="{{this}}"
+                                                    required></label>
+                                        </div>
+
+                                    </td>
+                                    {{else}}
+                                    <td>{{this}}</td>
+                                    {{/if}}
+                                    {{/each}}
+                                    {{/if}}
+                                </tr>
+                                <tr>
+                                    {{#if service.td5}}
+                                    {{#each service.td5}}
+                                    {{#if @last}}
+                                    <td>
+                                        <div class="radio">
+                                            <label><input type="radio" name="optradio" value="{{this}}"
+                                                    required></label>
+                                        </div>
+
+                                    </td>
+                                    {{else}}
+                                    <td>{{this}}</td>
+                                    {{/if}}
+                                    {{/each}}
+                                    {{/if}}
+                                </tr>
+                                <tr>
+                                    {{#if service.td6}}
+                                    {{#each service.td6}}
+                                    {{#if @last}}
+                                    <td>
+                                        <div class="radio">
+                                            <label><input type="radio" name="optradio" value="{{this}}"
+                                                    required></label>
+                                        </div>
+
+                                    </td>
+                                    {{else}}
+                                    <td>{{this}}</td>
+                                    {{/if}}
+                                    {{/each}}
+                                    {{/if}}
+                                </tr>
+                                <tr>
+                                    {{#if service.td7}}
+                                    {{#each service.td7}}
+                                    {{#if @last}}
+                                    <td>
+                                        <div class="radio">
+                                            <label><input type="radio" name="optradio" value="{{this}}"
+                                                    required></label>
+                                        </div>
+
+                                    </td>
+                                    {{else}}
+                                    <td>{{this}}</td>
+                                    {{/if}}
+                                    {{/each}}
+                                    {{/if}}
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+                        {{#if userlogin}}
+                        <input type="hidden" value="{{service.name}}" name="name">
+                        <button disabled type="button" class="btn" id="bookServiceButton"> <a id="abutton"
+                                data-dismiss="modal" data-toggle="modal">Book
+                                Service</a></button>
+                        {{else}}
+                        <input type="hidden" value="{{service.name}}" name="name">
+                        <button type="submit" disabled class="btn" id="bookServiceButton">Book
+                            Service</button>
+                        {{/if}}
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal HTML -->
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="icon-box">
+                        <i class="material-icons">&#xE876;</i>
+                    </div>
+                    <h4 class="modal-title">Awesome!</h4>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center">Your booking has been confirmed. Check your email for details.</p>
+                </div>
+                <div class="modal-footer">
+                    <button id="modalBtn" class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <a href="#top" class="upbutton bounce-1">
+        <i class="fa fa-arrow-up fa-w-14"></i>
+    </a>
+
+
+    <footer class="py-5 bg-dark w-100">
+        <ul class="list-group list-group-horizontal-sm offset-9">
+            {{#if userlogin}}
+            <li class="ml-3">
+                <a class="anc" href="/aboutus?userlogin=true">About Us</a>
+            </li>
+            {{else}}
+            <li class="ml-3">
+                <a class="anc" href="/aboutus">About Us</a>
+            </li>
+            {{/if}}
+            <li class=" ml-3">
+                <a class="anc" href="/contactus">Contact Us</a>
+            </li>
+            {{#unless userlogin}}
+            <li class=" ml-3">
+                <a class="anc" href="/adminpanel">Admin Panel</a>
+            </li>
+            {{/unless}}
+        </ul>
+        <hr />
+        <p class="m-0 mr-5 text-center text-white">Copyright &copy; Fix-it Buddy 2019</p>
+        <ul class="list-group list-group-horizontal-sm offset-5 mt-2">
+            <li class="ml-5"><a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram fa-lg"
+                        style="color: white;"></i></a></li>
+            <li class=" ml-3"><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook-square fa-lg"
+                        style="color: white;"></i></a></li>
+            <li class=" ml-3"><a href="https://twitter.com/?lang=en" target="_blank"><i
+                        class="fa fa-twitter-square fa-lg" style="color: white;"></i></a></li>
+        </ul>
+
+
+
+        <!-- /.container -->
+    </footer>
+
+
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+<script src="js/service.js"> </script>
+
+</html

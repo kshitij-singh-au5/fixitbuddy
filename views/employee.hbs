@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Employee Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+     <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/?userlogin=true"><img src="./logo.png" height="32px"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto text-dark">
+                   
+                   
+                    <li class="btn-group dropper">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">Admin
+                        </a>
+                        <div class=" dropdown-menu ">
+                            <a href="/profile" class="dropdown-item" type="button">My Profile</a>
+                            <a href="/logout" class="dropdown-item" type="button">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+          
+  
+   <div class="container-fluid">
+        <div class="row flex-xl-nowrap">
+            <div class="col-12 col-md-3 col-xl-2 bd-sidebar shadow " style="margin-left: 30px; height:400px;width:400px" id="sidebar-nav">
+                <nav class="bd-links collapse">
+                    <div class="bd-toc-item">
+                        <a class="bd-toc-link" href="/">Dashboard</a>
+                    </div>
+                    <hr>
+                    <div class="bd-toc-item">
+                        <a class="bd-toc-link" href="/read-employee">Employee</a>
+                    </div>
+                    <hr>
+                    <div class="bd-toc-item">
+                        <a class="bd-toc-link" href="/orderapproval">Order Approval</a>
+                    </div>
+                    <hr>
+                    <div class="bd-toc-item">
+                        <a class="bd-toc-link" href="/information">Information</a>
+                    </div>
+                </nav> 
+            </div> 
+            <main class="col-md-12  col-xl-11 py-md-3 pl-md-5" role="main" id="main-content">  
+                <h1 class="bd-title mt-2" style="margin-right:750px">Employees</h1>
+                <hr>
+                 <h3><a class="btn btn-secondary offset-9 mt-2" href="/create_details"><i class="fa fa-plus"></i> add new employee</a></h3>
+                    <br>
+               <div class="row">
+                    
+                    <table class="table text-center mt-1 "   id="employee-table">
+                        <thead>
+                            <tr>
+                            <th>Select</th>
+                            <th scope="col">employeeID</th>
+                            <th scope="col">firstName</th>
+                            <th scope="col">lastName</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">mobile</th>
+                            <th scope="col">Departmant</th>
+                            <th scope="col">JobTitle</th>
+                            <th scope="col">Experience</th>
+                            <th scope="col">state</th>
+                            <th scope="col">birth.date</th>
+                            <th scope="col">hire.date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each blogs}}
+                            <tr>
+                            <td scope="row">
+                               
+                           
+                                <a href="/update/{{this._id}}"><i class="fa fa-pencil fa-lg  edit"></i></a>
+                                <a href="/delete_employee/{{this._id}}" onclick="return confirm('Are you sure to delete this record ?');"><i class="fa fa-trash fa-lg offset-2" aria-hidden="true"></i></a>
+
+           
+                            </td>
+                            
+                            <td>{{this.id}}</td>
+                            <td>{{this.firstname}}</td>
+                            <td>{{this.lastname}}</td>
+                            <td>{{this.email}}</td>
+                            <td>{{this.mobile}}</td>
+                            <td>{{this.department}}</td>
+                            <td>{{this.title}}</td>
+                            <td>{{this.experience}}</td>
+                            <td>{{this.state}}</td>
+                            <td>{{Bdate}}</td>
+                            <td>{{Hdate}}</td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                        </table>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    
+    <footer class="py-5 bg-dark">
+        <ul class="list-group list-group-horizontal-sm offset-9">
+            <li>
+                <a class="anc" href="/aboutus">About Us</a>
+            </li>
+            <li class=" ml-3">
+                <a class="anc" href="/contactus">Contact Us</a>
+            </li>
+            <li class=" ml-3">
+                <a class="anc" href="/admin">Admin Panel</a>
+            </li>
+        </ul>
+        <hr />
+        <p class="m-0 mr-5 text-center text-white">Copyright &copy; Fix-it Buddy 2019</p>
+        <ul class="list-group list-group-horizontal-sm offset-5 mt-2">
+            <li class="ml-5"><a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram fa-lg"
+                        style="color: white;"></i></a></li>
+            <li class=" ml-3"><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook-square fa-lg"
+                        style="color: white;"></i></a></li>
+            <li class=" ml-3"><a href="https://twitter.com/?lang=en" target="_blank"><i
+                        class="fa fa-twitter-square fa-lg" style="color: white;"></i></a></li>
+        </ul>
+
+
+
+        <!-- /.container -->
+    </footer>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+<script src="/js/delete.js"></script>
+
+</html>

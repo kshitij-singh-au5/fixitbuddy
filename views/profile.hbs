@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>Fix-it Buddy</title>
+    <style>
+        .carousel-item {
+            height: 65vh;
+            min-height: 350px;
+            background: no-repeat center center scroll;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+
+        }
+
+        .card:hover {
+            cursor: pointer;
+        }
+
+        .list-group-item:hover {
+            background-color: black;
+            color: whitesmoke;
+        }
+
+        a:hover {
+            text-decoration: none;
+            cursor: pointer;
+            color: white !important;
+        }
+
+        a {
+            color: black;
+        }
+
+        footer {
+            width: 100%;
+
+            bottom: 0px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        hr {
+            border: 0.4px solid rgb(163, 163, 117);
+        }
+
+        .anc {
+            color: white;
+        }
+
+        .anc:hover {
+            text-decoration: none;
+        }
+
+        .acc:hover {
+            color: black !important;
+        }
+
+        .main {
+            min-height: 80vh;
+        }
+
+        #infoBox {
+            background-color: white;
+        }
+
+        #infoUpdateBox {
+            background-color: white;
+        }
+
+        #addressUpdateBox {
+            background-color: white;
+        }
+
+        #ico:hover {
+            background-color: #FF4B2B !important;
+            color: white;
+        }
+
+
+        .modal-confirm {
+            color: #636363;
+            width: 400px;
+        }
+
+        .modal-confirm .modal-content {
+            padding: 20px;
+            border-radius: 5px;
+            border: none;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .modal-confirm .modal-header {
+            border-bottom: none;
+            position: relative;
+        }
+
+        .modal-confirm h4 {
+            text-align: center;
+            font-size: 26px;
+            margin: 30px 0 -10px;
+        }
+
+        .modal-confirm .close {
+            position: absolute;
+            top: -5px;
+            right: -2px;
+        }
+
+        .modal-confirm .modal-body {
+            color: #999;
+        }
+
+        .modal-confirm .modal-footer {
+            border: none;
+            text-align: center;
+            border-radius: 5px;
+            font-size: 13px;
+            padding: 10px 15px 25px;
+        }
+
+        .modal-confirm .modal-footer a {
+            color: #999;
+        }
+
+        .modal-confirm .icon-box {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto;
+            border-radius: 50%;
+            z-index: 9;
+            text-align: center;
+            border: 3px solid #f15e5e;
+        }
+
+        .modal-confirm .icon-box i {
+            color: #f15e5e;
+            font-size: 46px;
+            display: inline-block;
+            margin-top: 13px;
+        }
+
+        .modal-confirm .btn {
+            color: #fff;
+            border-radius: 4px;
+            background: #60c7c1;
+            text-decoration: none;
+            transition: all 0.4s;
+            line-height: normal;
+            min-width: 120px;
+            border: none;
+            min-height: 40px;
+            border-radius: 3px;
+            margin: 0 5px;
+            outline: none !important;
+        }
+
+        .modal-confirm .btn-info {
+            background: #c1c1c1;
+        }
+
+        .modal-confirm .btn-info:hover,
+        .modal-confirm .btn-info:focus {
+            background: #a8a8a8;
+        }
+
+        .modal-confirm .btn-danger {
+            background: #f15e5e;
+        }
+
+        .modal-confirm .btn-danger:hover,
+        .modal-confirm .btn-danger:focus {
+            background: #ee3535;
+        }
+
+        .trigger-btn {
+            display: inline-block;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/?userlogin=true"><img src="./logo.png" height="32px"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto text-dark">
+                    {{!-- <li class="nav-item active">
+                        <a class="nav-link" href="#">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li> --}}
+
+                    {{!-- <li class="nav-item">
+                        <a class="nav-link" href="#">Services</a>
+                    </li> --}}
+                    <li class="btn-group dropper">
+
+                        <a class="nav-link dropdown-toggle acc" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            {{#if user.photo}}
+                            <img src="{{user.photo}}" height="30px" width="30px" class="rounded-circle">
+                            {{else}}
+                            <img class="rounded-circle"
+                                src="https://sophosnews.files.wordpress.com/2013/08/facebook-silhouette_thumb.jpg"
+                                height="30px" width="30px" alt="new pic">
+                            {{/if}}
+                            <b>{{user.firstname}}</b>
+                        </a>
+                        <div class=" dropdown-menu ">
+                            <a href="/profile" class="dropdown-item acc" type="button">My Profile</a>
+                            <a href="/logout" class="dropdown-item acc" type="button">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {{!-- <div class="container"> --}}
+
+    <div class="mt-5">
+        <div class="row ml-5 mt-5 mb-5 main">
+            <div class="col-md-2 mt-5 border rounded p-4 d-inline-block h-25 bg-light">
+                {{!-- <div class="list-group list-group-flush">
+                <a class="list-group-item border-0 mt-1 rounded">DASHBOARD</a>
+            </div> --}}
+                <div class="list-group list-group-flush " id="userInfo">
+                    <a class="list-group-item border-0 mt-1 rounded">INFORMATION</a>
+                </div>
+                <div class="list-group list-group-flush" id="infoUpdate">
+                    <a class="list-group-item border-0 mt-1 rounded">EDIT PROFILE</a>
+                </div>
+                <div class="list-group list-group-flush" id="addressUpdate">
+                    <a class="list-group-item border-0 mt-1 rounded">ADD NEW ADDRESS</a>
+                </div>
+                <div class="list-group list-group-flush" id="myBooking">
+                    <a class="list-group-item border-0 mt-1 rounded">MY BOOKING</a>
+                </div>
+            </div>
+            <div class="col-md-8 mt-5 offset-1 border rounded p-3" id="infoBox">
+
+                <div class="row">
+                    <div class="col-md-3 mt-4">
+                        {{#if user.photo}}
+                        <img src="{{user.photo}}" height="145px" width="150px" hspace="20" class="rounded-circle">
+                        {{else}}
+                        <img class="rounded-circle"
+                            src="https://sophosnews.files.wordpress.com/2013/08/facebook-silhouette_thumb.jpg"
+                            height="145px" width="150px" alt="new pic">
+                        {{/if}}
+                    </div>
+                    <div class="col-md-9">
+                        <div class="row mt-3 mr-5 border rounded p-2 bg-white border-primary">
+                            <div class="col-md-3">
+                                <b>FIRST NAME:</b>
+                            </div>
+                            <div class="col-md-9">
+                                {{user.firstname}}
+                            </div>
+                        </div>
+                        <div class="row mt-3 mr-5 border rounded p-2 bg-white border-primary">
+                            <div class="col-md-3">
+                                <b>LAST NAME:</b>
+                            </div>
+                            <div class="col-md-9">
+                                {{user.lastname}}
+                            </div>
+                        </div>
+                        <div class="row mt-3 mr-5 border rounded p-2 bg-white border-primary">
+                            <div class="col-md-3">
+                                <b>EMAIL:</b>
+                            </div>
+                            <div class="col--md-9">
+                                {{user.email}}
+                            </div>
+                        </div>
+                        <div class="row mt-3 mr-5 border rounded p-2 bg-white border-primary">
+                            <div class="col-md-3">
+                                <b>CONTACT NO. :</b>
+                            </div>
+                            <div class="col-md-9">
+                                {{user.mobile}}
+                            </div>
+                        </div>
+                        <div class="row mt-3 mr-5 border rounded p-2 bg-white border-primary">
+                            <div class="col-md-3">
+                                <b>ADDRESS:</b>
+                            </div>
+                            <div class="col-md-9">
+                                <span>{{#each user.inputAddress}}{{#if @last}}{{this}}{{/if}}{{/each}}
+                                    {{#each user.inputAddress2}}{{#if @last}}{{this}}{{/if}}{{/each}}
+                                    {{#each user.inputCity}}{{#if @last}}{{this}}{{/if}}{{/each}}
+                                    {{#each user.inputState}}{{#if @last}}{{this}}{{/if}}{{/each}}
+                                    {{#each user.inputZip}}{{#if @last}}{{this}}{{/if}}{{/each}}
+                                </span>
+                            </div>
+                        </div>
+                        {{!-- <p><b>FIRST NAME:</b> <span>{{user.firstname}}</span></p>
+                        <p><b>LAST NAME:</b> <span>{{user.lastname}}</span></p>
+                        <p><b>EMAIL:</b> <span>{{user.email}}</span></p>
+                        <p><b>CONTACT NO. :</b> <span>{{user.mobile}}</span></p>
+
+
+                        <p><b>ADDRESS:</b> <span>{{#each user.inputAddress}}{{#if @last}}{{this}}{{/if}}{{/each}}
+                                {{#each user.inputAddress2}}{{#if @last}}{{this}}{{/if}}{{/each}}
+                                {{#each user.inputCity}}{{#if @last}}{{this}}{{/if}}{{/each}}
+                                {{#each user.inputState}}{{#if @last}}{{this}}{{/if}}{{/each}}
+                                {{#each user.inputZip}}{{#if @last}}{{this}}{{/if}}{{/each}}
+                            </span></p> --}}
+                    </div>
+                </div>
+                {{#if addressUpdated}}
+                <div class="toast mt-3" data-autohide="false" id="toast">
+                    <div class="toast-header">
+                        <strong class="mr-auto" style="color:  #FF4B2B;">Address Updated</strong>
+                        <small class="text-muted">2 seconds ago</small>
+                        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+                    </div>
+                    <div class="toast-body">
+                        Your address has been successfully updated.
+                    </div>
+                </div>
+                {{/if}}
+                {{#if profileUpdated}}
+                <div class="toast mt-3" data-autohide="false" id="toast">
+                    <div class="toast-header">
+                        <strong class="mr-auto" style="color:  #FF4B2B;">Profile Updated</strong>
+                        <small class="text-muted">2 seconds ago</small>
+                        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+                    </div>
+                    <div class="toast-body">
+                        Your profile has been successfully updated.
+                    </div>
+                </div>
+                {{/if}}
+            </div>
+
+            <div class="col-md-8 mt-5 offset-1 border rounded p-3" id="infoUpdateBox">
+                <form method="POST" action="/updateuserinfo" class="mt-5" enctype="multipart/form-data">
+                    <div class="form-group row">
+                        <label for="photo" class="col-sm-2 col-form-label">User Photo</label>
+                        <div class="col-sm-10">
+                            <input type="file" id="photo" name="photo">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="firstname" class="col-sm-2 col-form-label">First Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="firstname" name="firstname"
+                                placeholder="First Name" value="{{user.firstname}}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="lastname" class="col-sm-2 col-form-label">Last Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="lastname" name="lastname"
+                                placeholder="Last Name" value="{{user.lastname}}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="mobile" class="col-sm-2 col-form-label">Mobile</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="mobile" name="mobile" placeholder="Mobile"
+                                value="{{user.mobile}}">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="newPassword" class="col-sm-2 col-form-label">New Password</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" id="newPassword" placeholder="******"
+                                name="newPassword">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="cfNewPassword" class="col-sm-2 col-form-label">Confirm New Password</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" id="cfNewPassword" placeholder="******"
+                                name="cfNewPassword">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="profileButton">Save Changes</button>
+                </form>
+
+
+            </div>
+
+            <div class="col-md-8 mt-5 offset-1 border rounded p-4" id="addressUpdateBox">
+                <form method="POST" action="/updateAddress" class="mt-5">
+
+                    <div class="form-group">
+                        <label for="inputAddress">Address Line 1</label>
+                        <input type="text" class="form-control" id="inputAddress" name="inputAddress"
+                            placeholder="1234 Main St" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputAddress2">Address Line 2</label>
+                        <input type="text" class="form-control" id="inputAddress2" name="inputAddress2"
+                            placeholder="Apartment, studio, or floor" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputCity">City</label>
+                            <input type="text" class="form-control" id="inputCity" name="inputCity" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputState">State</label>
+                            <select id="inputState" class="form-control" name="inputState">
+                                <option selected>Choose...</option>
+                                <option>Delhi</option>
+                                <option>Uttar Pradesh</option>
+                                <option>Haryana</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="inputZip">Zip</label>
+                            <input type="text" class="form-control" id="inputZip" name="inputZip">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </form>
+            </div>
+
+            <div class="col-md-8 mt-5 offset-1 border roundeed border-primary p-3 bg-light" id="myBookingBox">
+                <h4 class="text-center">Current Bookings</h4>
+                {{#unless user.price}}
+                <h2 class="text-center mt-5 p-5">No Bookings</h2>
+                {{/unless}}
+                {{#each user.price}}
+
+
+                <div class="row offset-1 mt-4">
+                    <div class="col-md-7 border rounded p-2 bg-white border-primary">
+                        <form method="POST" action="/deleteBooking" id="target">
+                            <input type="hidden" value="{{@index}}" name="index">
+
+                            {{!-- <input type="hidden" value="{{email}}" name="email" id="_id-{{@index}}">
+                            <input type="hidden" id="cost-{{@index}}" name="cost" value="{{this.[0]}}">
+                            <input type="hidden" id="category-{{@index}}" name="category" value="{{this.[1]}}">
+                            <input type="hidden" id="product-{{@index}}" name="product" value="{{this.[2]}}">
+                            <input type="hidden" id="totalCost-{{@index}}" name="totalCost" value="{{this.[3]}}">
+                            <input type="hidden" id="serviceName-{{@index}}" name="serviceName" value="{{this.[4]}}">  --}}
+
+                            <a href="#myModal" type="button" id="ico" class="btn rounded trigger-btn " data-toggle="modal"><i
+                                    class="fa fa-trash-o fa-lg"></i>
+                                Delete</a></form>
+                        <span class="offset-md-4 badge badge-info badge-pill">{{this.[4]}}</span>
+
+                        <ol class="list-group mt-4">
+
+                            Booking
+                            <li class="list-group-item list-group-item-primary mt-1">
+                                Rs.{{this.[0]}}
+                            </li>
+                            <li class="list-group-item list-group-item-primary mt-1">
+                                {{this.[1]}}
+                            </li>
+                            <li class="list-group-item list-group-item-primary mt-1">
+                                {{this.[2]}}
+                            </li>
+                        </ol>
+                    </div>
+                    {{!-- </form> --}}
+                    <div class="col-md-3 border rounded p-2 bg-white border-primary">
+                        <ul class="list-group">
+                            <li class="list-group-item text-center"><b>Invoice</b></li>
+                            <li class="list-group-item">Service Cost: <b>{{this.[0]}}</b> </li>
+                            <li class="list-group-item">SGST: <b>9%</b></li>
+                            <li class="list-group-item">CGST: <b>9%</b></li>
+                            <li class="list-group-item list-group-item-primary">Total amount to Paid :
+                                <b>{{this.[3]}}</b> </li>
+                        </ul>
+                    </div>
+                </div>
+
+                {{/each}}
+
+
+            </div>
+        </div>
+    </div>
+
+    {{!-- </div> --}}
+    {{!-- <div class="text-center">
+        <!-- Button HTML (to Trigger Modal) -->
+        <a href="#myModal" class="trigger-btn" data-toggle="modal">Click to Open Confirm Modal</a>
+    </div> --}}
+
+    <!-- Modal HTML -->
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="icon-box">
+                        <i class="material-icons">&#xE5CD;</i>
+                    </div>
+                    <h4 class="modal-title">Are you sure?</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Do you really want to delete the booking? This process cannot be undone.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                    <button id="modalBtn" type="button" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="py-5 bg-dark">
+        <ul class="list-group list-group-horizontal-sm offset-9">
+
+            <li class="ml-3">
+                <a class="anc" href="#">About Us</a>
+            </li>
+
+            <li class=" ml-3">
+                <a class="anc" href="/contactus">Contact Us</a>
+            </li>
+
+        </ul>
+        <hr />
+        <p class="m-0 mr-5 text-center text-white">Copyright &copy; Fix-it Buddy 2019</p>
+        <ul class="list-group list-group-horizontal-sm offset-5 mt-2">
+            <li class="ml-5"><a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram fa-lg"
+                        style="color: white;"></i></a></li>
+            <li class=" ml-3"><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook-square fa-lg"
+                        style="color: white;"></i></a></li>
+            <li class=" ml-3"><a href="https://twitter.com/?lang=en" target="_blank"><i
+                        class="fa fa-twitter-square fa-lg" style="color: white;"></i></a></li>
+        </ul>
+
+
+
+        <!-- /.container -->
+    </footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+<script src="js/profile.js"></script>
+
+</html>

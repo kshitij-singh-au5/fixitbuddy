@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Order Approval</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+    <header class="navbar navbar-expand navbar-light flex-column flex-md-row bd-navbar shadow">
+        <a class="navbar-brand mr-0 mr-md-2" id="logo" href="#">FiB</a>
+        <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex" id="nav-dropdown">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="nav-dropdown" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin Account</a>
+                <div class="dropdown-menu" id="nav-dropdown" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#">Profile</a>
+                    <a class="dropdown-item" href="#">Logout</a>
+                </div>
+            </li>
+        </ul>
+    </header>
+    <div class="container-fluid">
+        <div class="row flex-xl-nowrap">
+            <div class="col-12 col-md-3 col-xl-2 bd-sidebar shadow" id="sidebar-nav">
+                <nav class="bd-links collapse">
+                    <div class="bd-toc-item">
+                        <a class="bd-toc-link" href="/dashboard">Dashboard</a>
+                    </div>
+                    <hr>
+                    <div class="bd-toc-item">
+                        <a class="bd-toc-link" href="/employee">Employee</a>
+                    </div>
+                    <hr>
+                    <div class="bd-toc-item">
+                        <a class="bd-toc-link" href="/orderapproval">Order Approval</a>
+                    </div>
+                    <hr>
+                    <div class="bd-toc-item">
+                        <a class="bd-toc-link" href="/information">Information</a>
+                    </div>
+                </nav>
+            </div>
+            <main class="col-md-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content shadow" role="main" id="main-content">
+                <h1 class="bd-title" style="margin-right: 500px;">Orders for Approval</h1>
+                    <hr>
+                    <div class="row">
+                    <table class="table table-striped" id="employee-table">
+                        <thead>
+                            <tr>
+                            <th scope="col">Order #</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Purchase<br>Date</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Approve</th>
+                            <th scope="col"> Decline</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            <td scope="row">#CP4067415</td>
+                            <td>Mark</td>
+                            <td>07-01-2020</td>
+                            <td>Rs. 900</td>
+                            <td><button type="button" class="btn btn-primary btn-sm">Approve</button></td>
+                            <td><button type="button" class="btn btn-primary btn-sm">Decline</button></td>
+                            </tr>
+                            <tr>
+                            <td scope="row">#CP4067456</td>
+                            <td>Mark</td>
+                            <td>07-01-2020</td>
+                            <td>Rs. 1000</td>
+                            <td><button type="button" class="btn btn-primary btn-sm">Approve</button></td>
+                            <td><button type="button" class="btn btn-primary btn-sm">Decline</button></td>
+                            </tr>
+                        </tbody>
+                        </table>
+                </div>
+            </main>
+        </div>
+    </div>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="js/admindashboard.js"></script>
+</html>

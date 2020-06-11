@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>Fix-it Buddy</title>
+    <style>
+        .carousel-item {
+            height: 65vh;
+            min-height: 350px;
+            background: no-repeat center center scroll;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+
+        }
+
+        .card:hover {
+            cursor: pointer;
+        }
+
+        .list-group-item:hover {
+            background-color: black;
+            color: whitesmoke;
+        }
+
+        a:hover {
+            text-decoration: none;
+            cursor: pointer;
+            color: white !important;
+        }
+
+        a {
+            color: black;
+        }
+
+        footer {
+            width: 100%;
+
+            bottom: 0px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        hr {
+            border: 0.4px solid rgb(163, 163, 117);
+        }
+
+        .anc {
+            color: white;
+        }
+
+        .anc:hover {
+            text-decoration: none;
+        }
+
+        .acc:hover {
+            color: black !important;
+        }
+
+        .main {
+            min-height: 80vh;
+        }
+
+        #infoBox {
+            background-color: white;
+        }
+
+        #infoUpdateBox {
+            background-color: white;
+        }
+
+        #addressUpdateBox {
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="./logo.png" height="32px"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto text-dark">
+                    {{!-- <li class="nav-item active">
+                        <a class="nav-link" href="#">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li> --}}
+                    <li class="nav-item">
+                        <a class="nav-link acc" href="#">About Us</a>
+                    </li>
+                    {{!-- <li class="nav-item">
+                        <a class="nav-link" href="#">Services</a>
+                    </li> --}}
+                    <li class="btn-group dropper">
+                        <a class="nav-link dropdown-toggle acc" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false"><b>Hey Admin</b>
+                        </a>
+                        <div class=" dropdown-menu ">
+                            
+                            <a href="/adminlogout" class="dropdown-item acc" type="button">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row mt-5 mb-5">
+
+
+            <div class="col-md-12 mt-5 border roundeed border-primary p-2 bg-light" id="myBookingBox">
+                <h4 class="text-center">Current Bookings</h4>
+                {{#each user}}
+                {{#if this.price}}
+                <div class="row offset-1 mt-4">
+                    <div class="col-md-3 border rounded p-2 bg-white border-primary">
+                        <span class="offset-md-4 badge badge-info badge-pill">{{this.firstname}} {{this.lastname}}</span>
+                        {{#each this.price}}
+                        <ol class="list-group mt-4">
+
+                            Booking: <b>{{this.[4]}}</b>
+                            
+                            <li class="list-group-item list-group-item-primary mt-1">
+                                Rs.{{this.[0]}}
+                            </li>
+                            <li class="list-group-item list-group-item-primary mt-1">
+                                {{this.[1]}}
+                            </li>
+                            <li class="list-group-item list-group-item-primary mt-1">
+                                {{this.[2]}}
+                            </li>
+                            <li class="list-group-item list-group-item-primary mt-1">
+                                Total Amount(including GST): {{this.[3]}}
+                            </li>
+                        </ol>
+                        {{/each}}
+                    </div>
+                    <div class="col-md-7 border rounded p-2 bg-white border-primary">
+                        <ul class="list-group">
+                            
+                            <li class="list-group-item"><b>Address:</b>
+                                <span>{{#each this.inputAddress}}{{#if @last}}{{this}}{{/if}}{{/each}}
+                                {{#each this.inputAddress2}}{{#if @last}}{{this}}{{/if}}{{/each}}
+                                {{#each this.inputCity}}{{#if @last}}{{this}}{{/if}}{{/each}}
+                                {{#each this.inputState}}{{#if @last}}{{this}}{{/if}}{{/each}}
+                                {{#each this.inputZip}}{{#if @last}}{{this}}{{/if}}{{/each}}
+                            </span>
+                            </li>
+                            <li class="list-group-item">E-Mail: {{this.email}}</li>
+                            <li class="list-group-item">Contact No. : {{this.mobile}}</li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                {{/if}}
+                {{/each}}
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="py-5 bg-dark">
+        <ul class="list-group list-group-horizontal-sm offset-9">
+            <li>
+                <a class="anc" href="/aboutus">About Us</a>
+            </li>
+            <li class=" ml-3">
+                <a class="anc" href="/contactus">Contact Us</a>
+            </li>
+            <li class=" ml-3">
+                <a class="anc" href="/admin">Admin Panel</a>
+            </li>
+        </ul>
+        <hr />
+        <p class="m-0 mr-5 text-center text-white">Copyright &copy; Fix-it Buddy 2019</p>
+        <ul class="list-group list-group-horizontal-sm offset-5 mt-2">
+            <li class="ml-5"><a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram fa-lg"
+                        style="color: white;"></i></a></li>
+            <li class=" ml-3"><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook-square fa-lg"
+                        style="color: white;"></i></a></li>
+            <li class=" ml-3"><a href="https://twitter.com/?lang=en" target="_blank"><i
+                        class="fa fa-twitter-square fa-lg" style="color: white;"></i></a></li>
+        </ul>
+
+
+
+        <!-- /.container -->
+    </footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+
+</html>

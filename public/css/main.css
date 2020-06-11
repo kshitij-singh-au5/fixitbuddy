@@ -1,0 +1,140 @@
+.navbar-brand{
+    float:left;
+}
+
+#nav-dropdown{
+    margin-right: 40px;
+}
+
+#logo{
+    font-size: 25px;
+}
+
+.bd-sidebar {
+    order: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+  
+@media (min-width: 768px) {
+    .bd-sidebar {
+      border-right: 1px solid rgba(0, 0, 0, 0.1);
+      padding-left: 2rem;
+    }
+    @supports (position:sticky ) {
+      .bd-sidebar {
+        position: sticky;
+        top: 4rem;
+        z-index: 1000;
+        height: calc(78vh - 8rem);
+      }
+    }
+}
+  
+@media (min-width: 1200px) {
+    .bd-sidebar {
+      flex: 0 1 320px;
+    }
+}
+
+.bd-links {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-right: 5px;
+    margin-left: 5px;
+    font-size: 18px;
+}
+  
+@media (min-width: 768px) {
+    @supports (position: sticky) {
+      .bd-links {
+        max-height: calc(100vh - 9rem);
+        overflow-y: auto;
+      }
+    }
+}
+  
+@media (min-width: 768px) {
+    .bd-links {
+      display: block !important;
+    }
+}
+
+#widget-subheading{
+    font-size: small;
+}
+
+#widget-content-right{
+    margin-left: 200px;
+}
+
+/* #employee-button-add{
+    margin: 10px;
+    width: 80px;
+    height:30px;
+    margin-right: 50px;
+} */
+
+
+#employee-table{
+    width: 1000%;
+    border-radius: 3px;
+    margin-top: 20px;
+    border-style: groove;
+    
+    margin-right: 100px;
+    
+}
+
+tr{
+    text-align: center;
+    font-size: 18px;
+}
+
+th{
+    font-size: 19px;
+}
+
+#sidebar-nav{
+    margin-top: 15px;
+    margin-left:15px;
+    margin-right:15px;
+    padding:36px;
+    text-align:center;
+}
+
+#main-content{
+    width:7000px;
+    margin-top: 15px;
+    margin-left:15px;
+    margin-right:15px;
+}
+
+.avatar-pic {
+  width: 150px;
+}
+
+#sidebar-nav,#main-content{
+  margin-bottom: 200px;
+  margin-top: 90px;
+}
+
+.col-lg-5{
+  height: 70px;
+  margin:15px;
+}
+body {
+  font-family: 'Titillium Web', sans-serif;
+  overflow-x: hidden;
+}
+footer {
+  width: 2000px;
+
+  bottom: 0px;
+}
+
+#form{
+  margin-top:100px;
+}
+html{
+  height:800px;
+}
